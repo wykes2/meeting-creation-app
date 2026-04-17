@@ -18,7 +18,7 @@ const ParticipantSelection: React.FC<ParticipantSelectionProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
 
   // Sample participants data
-  const allParticipants = [
+  const allParticipants = useMemo(() => [
     { id: '1', name: 'John Smith', email: 'john.smith@company.com', avatar: 'JS', role: 'Developer' },
     { id: '2', name: 'Sarah Johnson', email: 'sarah.j@company.com', avatar: 'SJ', role: 'Designer' },
     { id: '3', name: 'Mike Davis', email: 'mike.davis@company.com', avatar: 'MD', role: 'Manager' },
@@ -29,7 +29,7 @@ const ParticipantSelection: React.FC<ParticipantSelectionProps> = ({
     { id: '8', name: 'Jessica Taylor', email: 'jessica.t@company.com', avatar: 'JT', role: 'Marketing' },
     { id: '9', name: 'Chris Lee', email: 'chris.lee@company.com', avatar: 'CL', role: 'Designer' },
     { id: '10', name: 'Amanda White', email: 'amanda.w@company.com', avatar: 'AW', role: 'Sales' }
-  ];
+  ], []);
 
   const filteredParticipants = useMemo(() => {
     if (!searchQuery) return allParticipants;

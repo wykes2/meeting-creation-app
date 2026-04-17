@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Users, UserPlus, X, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Search, Users, X, ArrowLeft, ArrowRight } from 'lucide-react';
 import { MeetingData } from '../App';
 
 interface ParticipantSelectionProps {
@@ -41,11 +41,11 @@ const ParticipantSelection: React.FC<ParticipantSelectionProps> = ({
         participant.email.toLowerCase().includes(query) ||
         participant.role.toLowerCase().includes(query)
     );
-  }, [searchQuery]);
+  }, [searchQuery, allParticipants]);
 
   const selectedParticipants = useMemo(() => {
     return allParticipants.filter(p => meetingData.participants.includes(p.id));
-  }, [meetingData.participants]);
+  }, [meetingData.participants, allParticipants]);
 
   const toggleParticipant = (participantId: string) => {
     const currentParticipants = meetingData.participants;
